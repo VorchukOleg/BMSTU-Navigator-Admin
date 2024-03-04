@@ -1,0 +1,63 @@
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: var(--app-header-z-index);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: var(--app-header-height);
+    background-color: var(--surface-card);
+    box-shadow:
+        0 3px 5px rgb(0 0 0 / 2%),
+        0 0 2px rgb(0 0 0 / 5%),
+        0 1px 4px rgb(0 0 0 / 8%);
+    transition: left $layout-transition-duration;
+    padding-inline: var(--main-padding);
+
+    @include mobile {
+        --app-header-height: 56px;
+
+        border-bottom: 1px solid var(--surface-border);
+        box-shadow: none;
+    }
+}
+
+.tiered-menu {
+    @include mobile {
+        :global {
+            .p-menuitem-active {
+                > .p-menuitem-link {
+                    > .p-submenu-icon {
+                        transform: rotate(90deg) !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.button {
+    padding: 0;
+    border: 0;
+
+    &.logged {
+        box-shadow:
+            0 0 0 2px #ffffff,
+            0 0 0 4px #9dc1fb,
+            0 1px 2px 0 rgb(0 0 0);
+    }
+}
+
+.logo-icon {
+    height: 100%;
+}
+
+.logo-button {
+    all: initial;
+    height: fit-content;
+    height: 100%;
+    padding-top: var(--small-padding);
+    cursor: pointer;
+}

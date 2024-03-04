@@ -1,0 +1,42 @@
+.item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    color: var(--text-color);
+    border-radius: $layout-border-radius;
+    cursor: pointer;
+    transition:
+        background-color $layout-transition-duration,
+        box-shadow $layout-transition-duration;
+
+    &.active {
+        color: var(--primary-color);
+        font-weight: 700;
+        background-color: var(--surface-hover);
+    }
+
+    &.disabled {
+        color: var(--bluegray-200);
+        cursor: auto;
+        pointer-events: none;
+    }
+
+    &:hover {
+        background-color: var(--surface-hover);
+    }
+
+    &:focus {
+        @include focused-inset;
+    }
+}
+
+.icon {
+    margin-right: 8px;
+}
+
+.accordion {
+    > button:first-child {
+        padding: 0.75rem 1rem;
+    }
+}

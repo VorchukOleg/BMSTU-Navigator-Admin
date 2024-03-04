@@ -1,0 +1,42 @@
+.side-menu {
+    position: sticky;
+    top: var(--app-header-height);
+    left: 0;
+    z-index: var(--app-side-menu-z-index);
+    width: var(--app-side-menu-width);
+    min-width: var(--app-side-menu-width);
+    height: calc(100vh - var(--app-header-height));
+    padding-inline: var(--main-padding);
+    padding-block: var(--small-padding);
+    overflow-y: auto;
+    background-color: var(--surface-overlay);
+    transition:
+        transform $layout-transition-duration,
+        left $layout-transition-duration;
+    user-select: none;
+
+    @include mobile {
+        width: 100vw;
+    }
+}
+
+.layout-menu {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    user-select: none;
+}
+
+.sidebar {
+    width: var(--app-side-menu-width);
+
+    :global {
+        .p-sidebar-content {
+            padding: 0;
+        }
+    }
+
+    @include mobile {
+        width: 100vw;
+    }
+}

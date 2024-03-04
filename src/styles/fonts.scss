@@ -1,0 +1,18 @@
+/* stylelint-disable property-no-unknown */
+@font-face {
+    font-weight: 100 900;
+    font-family: 'Inter var';
+    font-style: normal;
+    src: url('./fonts/Inter-roman.var.woff2?v=3.19') format('woff2');
+    font-display: swap;
+    font-named-instance: 'Regular';
+}
+
+@font-face {
+    font-weight: 100 900;
+    font-family: 'Inter var';
+    font-style: italic;
+    src: url('./fonts/Inter-italic.var.woff2?v=3.19') format('woff2');
+    font-display: swap;
+    font-named-instance: 'Italic';
+}

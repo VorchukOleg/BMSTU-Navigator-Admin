@@ -1,0 +1,1 @@
+export { BaseNodesPage as PointsPage } from './BaseNodesPage';

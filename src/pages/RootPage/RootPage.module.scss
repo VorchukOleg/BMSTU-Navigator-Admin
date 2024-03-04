@@ -1,0 +1,25 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    min-height: calc(100vh - var(--app-header-height));
+    padding: var(--main-padding);
+    overflow-y: auto;
+    background-color: var(--surface-ground);
+
+    @include mobile {
+        padding-inline: 0;
+    }
+}
+
+.header,
+.main,
+.side-menu {
+    @include fade-in-children;
+    @include fade-in;
+}
+
+.content {
+    display: flex;
+}

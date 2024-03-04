@@ -1,0 +1,155 @@
+@mixin focused() {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: var(--focus-ring);
+    transform: translate3d(0, 0, 0);
+    transition: box-shadow 0.2s;
+}
+
+@mixin focused-inset {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: inset var(--focus-ring);
+    transform: translate3d(0, 0, 0);
+    filter: drop-shadow(var(--focus-ring));
+    transition: box-shadow 0.2s;
+}
+
+@mixin fade-in {
+    filter: opacity(0);
+    transition: filter $fade-in-duration $fade-in-duration-timing-function;
+    transition-delay: 100ms;
+
+    &.visible {
+        filter: opacity(1);
+    }
+}
+
+@mixin fade-in-important {
+    filter: opacity(0) !important;
+    transition: filter $fade-in-duration $fade-in-duration-timing-function;
+    transition-delay: 100ms;
+
+    &.visible {
+        filter: opacity(1) !important;
+    }
+}
+
+@mixin fade-in-children {
+    > * {
+        filter: opacity(0);
+        transition: filter $fade-in-duration $fade-in-duration-timing-function;
+        transition-delay: 100ms;
+    }
+
+    &.visible {
+        > * {
+            filter: opacity(1);
+        }
+    }
+}
+
+@mixin cut-for-n-rows($n: 2) {
+    /* stylelint-disable-next-line value-no-vendor-prefix */
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: pre-line;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: $n;
+    -webkit-box-orient: vertical;
+}
+
+@mixin centered-flexbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin mobile {
+    @media screen and (max-width: #{$screen-mobile-max}) {
+        @content;
+    }
+}
+
+@mixin not-mobile {
+    @media screen and (min-width: #{calc($screen-mobile-max + 1px)}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (max-width: #{$screen-tablet-max}) {
+        @content;
+    }
+}
+
+/* desktop === not-tablet */
+@mixin desktop {
+    @media screen and (min-width: #{calc($screen-tablet-max + 1px)}) {
+        @content;
+    }
+}
+
+@mixin notebook {
+    @media screen and (max-width: #{$screen-notebook-max}) {
+        @content;
+    }
+}
+
+@mixin not-notebook {
+    @media screen and (min-width: #{calc($screen-notebook-max + 1px)}) {
+        @content;
+    }
+}
+
+@mixin large-monitor {
+    @media screen and (min-width: #{$screen-large-monitor-min}) {
+        @content;
+    }
+}
+
+@mixin custom-scrollbar {
+    /* плашка-бегунок и фон */
+
+    &::-webkit-scrollbar {
+        width: 6px; /* в основном для вертикальных полос прокрутки */
+        height: 6px; /* в основном для горизонтальных полос прокрутки */
+    }
+
+    &::-webkit-scrollbar-thumb {
+        /* плашка-бегунок */
+        background: var(--primary-200);
+        border-radius: 8px;
+    }
+
+    &:-webkit-scrollbar-track {
+        /* фон */
+        background: transparent;
+    }
+
+    scrollbar-color: var(--primary-200) transparent;
+}
+
+/* Enable hover only on non-touch devices */
+@mixin hover {
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            @content;
+        }
+    }
+}
+
+// Используется для закраски поинта в ячейки успеваемости
+@mixin mark-pass-status-color {
+    &.late {
+        --mark-color: var(--orange-300);
+    }
+
+    &.early {
+        --mark-color: var(--green-600);
+    }
+
+    &.in-time {
+        --mark-color: var(--green-400);
+    }
+}
